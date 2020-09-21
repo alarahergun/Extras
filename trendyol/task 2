@@ -1,0 +1,36 @@
+int solution(char *S) 
+{
+  int i;
+  int length = strlen(S);
+  int toplam = 0, islem_sayisi=0;
+  
+  int *a =(int*)malloc(length*sizeof(int));
+	for(i=0;i<length;i++)
+		a[i]=S[i]-48;
+ 
+  for(i=0; i<length; i++)
+  {
+  	toplam += (a[i] * pow(2, length-(i+1)));
+  }  
+
+label : 
+  if(toplam != 0)
+  {
+  	if(toplam%2 == 1)
+  	{
+  		toplam = toplam - 1;
+		islem_sayisi++;
+		goto label;
+	}
+	
+	if(toplam%2 == 0)
+	{
+		toplam = toplam / 2;
+		islem_sayisi++;
+		goto label;
+	}
+  }
+  
+  return islem_sayisi;
+    // write your code in C99 (gcc 6.2.0)
+}

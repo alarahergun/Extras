@@ -1,0 +1,75 @@
+
+int solution(char *A, char *B) 
+{
+    int i,j;
+    int ortak = 0;
+    int N = strlen(A);
+    int M = strlen(B);
+    int fark = 0;
+    
+    for(i=0; i<N; i++)
+     {
+        for(j=0; j<M; j++)
+             {
+                if(A[i] == B[j])
+                    {
+                      ortak++;
+                    }
+             }
+                }
+    
+    int c[ortak];
+    int k=0;
+
+    for (i = 0; i < N; i++)
+            {
+                if (k == ortak)
+                    break;
+                else for (j = 0; j < M; j++)
+                        {
+                        if (A[i] == B[j])
+                            {
+                            c[k] = A[i];
+                            k++;
+                            }
+                        }
+                }
+                
+int pres = 0;
+
+                for (i = 0; i < N; i++)
+                {
+                    pres = 0;
+                    for (j = 0; j < ortak; j++)
+                    {
+                        if (A[i] == c[j])
+                        {
+                            pres = 1;
+                        }
+                    }
+
+                    if (pres == 0)
+                    {
+                        fark++;
+                    }
+                }
+                
+                for (i = 0; i < M; i++)
+                {
+                    pres = 0;
+                    for (j = 0; j < ortak; j++)
+                    {
+                        if (B[i] == c[j])
+                        {
+                            pres = 1;
+                        }
+                    }
+
+                    if (pres == 0)
+                    {
+                        fark++;
+                    }
+                }
+
+return fark;
+}
